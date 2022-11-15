@@ -2,8 +2,7 @@ from tkinter import *
 from PIL import ImageTk,Image
 import pymysql
 from tkinter import messagebox
-import os
-import subprocess
+
 
 bookTable="books"
 issueTable="issued_books"
@@ -15,11 +14,6 @@ mydatabase="mydb"
 con = pymysql.connect(host="localhost", user="root", password=mypass, database=mydatabase)
 cur = con.cursor()
 
-
-
-def Viewissuebooks():
-    subprocess.call(["python", "view_issued_books.py"])
- 
 
 def View():
     root = Tk()
@@ -49,7 +43,7 @@ def View():
     LabelFrame.place(relx=0.1, rely=0.3, relwidth=0.8, relheight=0.5)
 
     #add a text label to LabeFrame
-    textLabel = Label(LabelFrame, text="%10s %40s %30s %20s"%('BID','Title','Author','Status'),
+    textLabel = Label(LabelFrame, text="%10s %25s %30s %40s"%('Book-ID','Issued to ','E-Mail','Contact no.'),
                     bg="black", fg="white")
     textLabel.place(relx=0.07, rely=0.1)
 
@@ -61,24 +55,20 @@ def View():
     
     #declare var to increase the height at y-axis to print details
     #query to retrieve details from books table
-    getBooks = "select * from books order by bid asc ";
+    getBooks = "select * from issued_books order by bid asc ";
     try:
         cur.execute(getBooks)
         con.commit()
         for i in cur:
-            Label(LabelFrame, text="%10s %40s %30s %20s"%(i[0],i[1],i[2],i[3]),
+            Label(LabelFrame, text="%10s %22s %35s %18s"%(i[0],i[1],i[2],i[3]),
                     bg="black", fg="white").place(relx=0.07, rely=y)
             y += 0.1
             
     except:
         messagebox.showinfo("Error","Failed to Fetch files from database")
 
-    quitBtn = Button(root, text="QUIT", bg='#0048ff', fg="white", command=root.destroy)
-    quitBtn.place(relx=0.5, rely=0.9, relwidth=0.18, relheight=0.08)
-
-    #issue books 
-    quitBtn = Button(root, text="Issue Books ", bg='#0048ff', fg="white",command=Viewissuebooks)
-    quitBtn.place(relx=0.3, rely=0.9, relwidth=0.18, relheight=0.08)
+    quitBtn = Button(root, text="QUIT", bg='lightblue', fg="black", command=root.destroy)
+    quitBtn.place(relx=0.4, rely=0.9, relwidth=0.18, relheight=0.08)
 
     root.mainloop()
 
