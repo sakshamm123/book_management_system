@@ -47,8 +47,7 @@ def addBook():
     label6.image = img
     label6.pack()
 
-    mypass="root"
-    mydatabase = "mydb"
+
 
     con = pymysql.connect(host="localhost", user="root", password=mypass, database=mydatabase)
     cur = con.cursor()
@@ -107,8 +106,8 @@ def addBook():
 bookTable="books"
 issueTable="books_issued"
 
-mypass="root"
-mydatabase="mydb"
+mypass="enter your password here"
+mydatabase="enter your database name"
 
 
 
