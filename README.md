@@ -1,5 +1,16 @@
 # book_management_system
 
+
+# requirements
+
+pillow
+
+pip install pillow
+
+pymsql
+
+pip install pymysql
+
 # command to create database
 
 create database mydb;
