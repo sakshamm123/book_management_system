@@ -8,10 +8,10 @@ import math
 import random
 import smtplib
 
-mypass="root"
-mydatabase="mydb"
-mail_id="bookmanagementsystem9@gmail.com"
-app_password="asqdfrhqbinbzzkp"
+mypass="enter you database password"
+mydatabase="enter your database name"
+mail_id="enter your mail here"
+app_password="enter you app password"
 
     
 def check_Pass():
