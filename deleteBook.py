@@ -6,8 +6,8 @@ from tkinter import messagebox
 bookTable="books"
 issueTable="books_issued"
 
-mypass="root"
-mydatabase="mydb"
+mypass="enter your database password"
+mydatabase="enter your database name"
 
 con = pymysql.connect(host="localhost", user="root", password=mypass, database=mydatabase)
 cur = con.cursor()
